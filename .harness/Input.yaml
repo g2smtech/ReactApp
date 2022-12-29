@@ -1,0 +1,25 @@
+inputSet:
+  identifier: "Input"
+  name: "Input"
+  orgIdentifier: "default"
+  projectIdentifier: "Harnessdeploy"
+  pipeline:
+    identifier: "harnessdeploy"
+    stages:
+    - stage:
+        identifier: "deploy"
+        type: "Deployment"
+        spec:
+          service:
+            serviceInputs:
+              serviceDefinition:
+                type: "Kubernetes"
+                spec:
+                  artifacts:
+                    primary:
+                      primaryArtifactRef: "docker registry"
+                      sources:
+                      - identifier: "docker registry"
+                        type: "DockerRegistry"
+                        spec:
+                          tag: "<+input>"
